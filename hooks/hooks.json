@@ -2,9 +2,9 @@
   "hooks": {
     "Stop": [
       {
-        "type": "command",
-        "command": "node -e \"\nconst chunks = [];\nprocess.stdin.on('data', d => chunks.push(d));\nprocess.stdin.on('end', () => {\n  const input = JSON.parse(Buffer.concat(chunks).toString());\n  const transcript = input.transcript || [];\n  const lastAssistant = [...transcript].reverse().find(m => m.role === 'assistant');\n  const hasResearchContent = lastAssistant && (\n    /L[0-6]|layer|value chain|decompos|india proxy|thesis|stress.test|reading list|company|business|market|invest|sector|theme/i.test(lastAssistant.content)\n  );\n  if (hasResearchContent) {\n    const disclaimer = '\\n\\n---\\n> **Research purposes only.** Nothing in this output constitutes investment advice, a recommendation, or a solicitation to buy, sell, or hold any security, fund, or financial instrument. I am not a SEBI registered investment advisor. Ameya Pimpalgaonkar is not a SEBI registered investment advisor. Always conduct your own due diligence and consult a SEBI registered investment advisor before making any financial decision.';\n    process.stdout.write(JSON.stringify({ type: 'append', content: disclaimer }));\n  } else {\n    process.stdout.write(JSON.stringify({ type: 'skip' }));\n  }\n});\n\"",
-        "description": "Appends SEBI disclaimer to any output containing research content"
+        "type": "prompt",
+        "prompt": "Review the assistant's last response in this conversation. If it contains any research content related to value chains, companies, sectors, investment themes, Layer analysis (L0-L6), India proxies, thesis stress tests, or any financial or market discussion, append the following disclaimer exactly as written to the end of the response:\n\n---\n> **Research purposes only.** Nothing in this output constitutes investment advice, a recommendation, or a solicitation to buy, sell, or hold any security, fund, or financial instrument. I am not a SEBI registered investment advisor. Ameya Pimpalgaonkar is not a SEBI registered investment advisor. Always conduct your own due diligence and consult a SEBI registered investment advisor before making any financial decision.\n\nIf the response does not contain research content (e.g. it is a greeting, setup question, or general conversation), do not append anything. Return {\"ok\": true} in all cases.",
+        "timeout": 30
       }
     ]
   }
