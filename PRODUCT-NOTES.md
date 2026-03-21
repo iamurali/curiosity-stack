@@ -1,0 +1,330 @@
+# Curiosity Stack — Product Notes
+*Last updated: March 20, 2026*
+*Author: Ameya Pimpalgaonkar*
+*GitHub: github.com/ameya85/curiosity-stack*
+
+This document captures all key product decisions, design rationale, roadmap, and pending items from the full plugin build session. It is the persistent record of why things were built the way they were.
+
+---
+
+## 1. What Curiosity Stack Is
+
+A Claude Cowork plugin for structured research thinking. Turns any technology, market signal, or global event into a layered value chain breakdown — through Socratic conversation, not information dumps.
+
+**Core thesis:** Most people see a headline and form a vague impression. Curiosity Stack is the method for going deeper — from signal to specific, non-obvious business insight — layer by layer, question by question.
+
+**Meta-principle (never change this):**
+> *"The intent is not to reach the end of the process but to go through the process itself."*
+
+**What it is NOT:**
+- Not a stock tips tool
+- Not a recommendation engine
+- Not a chatbot giving generic answers
+- The depth (8-10 minutes to first output) is a feature, not a bug
+
+**Primary audience:**
+- Retail investors researching themes before they are mainstream
+- Enterprise professionals understanding where AI and technology are going
+- Anyone trying to map second and third order effects of macro events
+
+---
+
+## 2. The Six-Layer Framework
+
+| Layer | Question | What you find |
+|-------|----------|---------------|
+| L0 | What's the signal? | Why this matters now |
+| L1 | What is it really? | Mechanics, not headlines |
+| L2 | What causes it? | Root cause tree |
+| L3 | What fixes it? | Solution categories = industries |
+| L4 | What does it require? | Inputs, infrastructure, talent |
+| L5 | Who does this work? | Named companies — global + India |
+| L6 | Research landscape? | How the space is typically accessed |
+
+---
+
+## 3. Key Design Decisions
+
+### Why Socratic (ask before tell)
+The plugin asks before telling. Users build the understanding by answering, not by reading a wall of text. This is the correct design for a thinking tool — it forces engagement and creates retention.
+
+### Why depth takes time
+8-10 minutes to reach the value chain diagram is intentional. A calculator should be instant. A thinking tool should not be. The process is the value. Do not optimise for speed.
+
+### Why local.md for memory
+Cowork has no memory between sessions. `curiosity-stack.local.md` is the memory bridge — written during setup, read silently at the start of every session. Every decision about personalisation flows through this file.
+
+### Why India angle is non-negotiable
+No other plugin in the Anthropic directory has this. For a 42K Twitter audience skewing Indian investor and enterprise professional — this is a distribution advantage, not just a feature.
+
+### Why the SEBI hook is mandatory
+The plugin operates in investment-adjacent territory. The SEBI disclaimer must appear on every research output without exception. It is enforced via a Stop event hook — not just a skill instruction that can be overridden. Changed from node command hook to prompt hook in v3.2.0 patch to fix Cowork Windows compatibility.
+
+### Why warm white palette (not dark)
+Previous versions used dark backgrounds with amber accents — high drama, low readability. Changed to warm white `#fafaf8`, soft charcoal `#2c2c2c`, single teal accent `#1b5e52`. Rationale: the output should feel like a senior analyst's research PDF, not a vibecoded app. Bloomberg terminal meets research journal.
+
+### Why attribution is baked into every artifact
+When someone takes a Curiosity Stack output, rebuilds it, and publishes it publicly — there is no trail back to the plugin without explicit attribution. The `⬡ Curiosity Stack` badge and invisible HTML source comment solve this. The badge must be designed to feel like a quality mark, not a watermark — something creators are proud to keep.
+
+### Why local.md cannot be written directly by the plugin
+Cowork's sandboxed environment restricts direct file writes during a session. The plugin generates the exact YAML block for the user to paste. This is the correct pattern — user controls the file, plugin generates the content.
+
+---
+
+## 4. SEBI Compliance Rules (Non-Negotiable)
+
+**Mandatory disclaimer on every output:**
+```
+I am not a SEBI registered investment advisor. Ameya Pimpalgaonkar is not a SEBI
+registered investment advisor. Nothing produced by this plugin constitutes investment
+advice, a recommendation, or a solicitation to buy, sell, or hold any security, fund,
+or financial instrument. All outputs are for educational and research purposes only.
+```
+
+**Hard decline triggers** (decline immediately, no partial answers):
+- "Should I buy / sell / hold [company]?"
+- "Is [company] a good investment?"
+- "Will [company] go up / down?"
+- "What price should I buy at?"
+- "Is this a good time to invest?"
+- Any variation of the above
+
+**Language substitutions (mandatory):**
+| Never use | Always use instead |
+|-----------|-------------------|
+| Investment opportunity | Research candidate |
+| Buy / Sell / Hold | Never use |
+| Investable | Worth researching further |
+| Entry point | How this is typically accessed |
+| Good investment | Interesting from a research perspective |
+| Target price | Never mention |
+| Recommend | Never use |
+
+---
+
+## 5. Version History
+
+### v1.0.0 — Initial release
+Core framework, basic setup, 4 commands, 8 skills, 3 connectors.
+
+### v2.0.0 — SEBI hardening
+SEBI compliance skill added. Thesis Stress Test added. Reading list added. Output choice flow (never auto-generate all three). MCP expanded to 17 connectors.
+
+### v2.0.1 — Company name cleanup
+Removed all specific company and stock name references from public-facing files.
+
+### v3.0.0 — Full rebuild (March 13, 2026)
+- Welcome agent via `settings.json`
+- SEBI disclaimer hook via `hooks/hooks.json`
+- `curiosity-stack.local.md` persistent memory
+- Autonomous India Proxy Agent (`agents/india-proxy-agent.md`)
+- README "Making It Yours" section
+- MIT LICENSE, CHANGELOG
+- GitHub: `github.com/ameya85/curiosity-stack`
+- Submitted to Anthropic plugin directory
+
+### v3.1.0 — New features (March 15, 2026)
+- Decomposition Library — local save, optional Drive/Notion mirror, topic retrieval
+- Watchlist Tracker + Trigger Alerts — scheduled monitoring, two modes (tracker + trigger)
+- Email digest via Gmail — sent automatically on cadence
+- Source Credibility — personal source registry, post-session rating, surfaces at L1/L5
+- `/curiosity-stack:library` and `/curiosity-stack:watchlist` commands
+- Setup extended with 3 new sections
+- local.md extended with all new fields
+
+### v3.2.0 — Visual overhaul + sharing (March 20, 2026)
+- New design system: warm white, soft charcoal, single teal accent, 14px minimum text
+- Animated Value Chain — layer-by-layer build animation
+- Animated Thesis Stress Test — three-column visual layout
+- Progressive layer cards — mini visuals after L2, L4, L6
+- Research Brief — 1-page PDF output, forwardable
+- Shareable output card — formatted for X and LinkedIn, `#CuriosityStack` tag
+- Attribution on everything — `⬡ Curiosity Stack` badge + invisible HTML comment
+- Feedback mechanism — first session prompt + every session 👍👎💬
+- Google Form: `https://docs.google.com/forms/d/e/1FAIpQLScr_BFdPYWWBXmiiiuU4UKWdr9a94OBnUuaBgJ5515ZWBiZqQ/viewform`
+- Public share option after every output
+- local.md write fix — YAML block generated for user to paste
+- SEBI hook fix — replaced node command with prompt hook (Cowork Windows compatibility)
+
+---
+
+## 6. Full Plugin Structure (v3.2.0)
+
+```
+curiosity-stack/
+├── .claude-plugin/plugin.json       # Manifest v3.2.0
+├── .mcp.json                        # 17 MCP connectors
+├── settings.json                    # Activates welcome agent on first session
+├── agents/
+│   ├── welcome.md                   # First-session orientation
+│   ├── india-proxy-agent.md         # Autonomous India proxy research
+│   └── watchlist-agent.md           # Autonomous watchlist monitoring
+├── commands/
+│   ├── setup.md
+│   ├── decompose.md
+│   ├── india-proxy.md
+│   ├── stress-test.md
+│   ├── library.md
+│   └── watchlist.md
+├── hooks/
+│   └── hooks.json                   # SEBI disclaimer — prompt hook, Stop event
+├── skills/
+│   ├── sebi-compliance/             # ALWAYS active, highest priority
+│   ├── curiosity-framework/         # Core 6-layer method + progressive cards
+│   ├── setup/                       # Onboarding + local.md read/write
+│   ├── company-discovery/           # India proxy patterns
+│   ├── output-generator/            # 4 output formats + feedback + sharing
+│   ├── thesis-stress-test/          # Animated 3-column visual
+│   ├── reading-list/                # 5 curated recommendations
+│   ├── source-guide/                # Where to look at each layer
+│   ├── decomposition-library/       # Save, retrieve, compare sessions
+│   ├── watchlist-tracker/           # Tracker + trigger modes
+│   └── source-credibility/          # Personal source registry
+├── library/README.md                # Saved decompositions folder
+├── curiosity-stack.local.md         # Personal context file (user edits)
+├── CHANGELOG.md
+├── LICENSE (MIT)
+└── README.md
+```
+
+**Total files: 29**
+
+---
+
+## 7. local.md Field Reference
+
+```yaml
+# Core context
+context:              # Investor / Enterprise / Both
+geography:            # India / Global / Both
+themes:               # Topics actively researching
+watchlist:            # Companies/topics to track (basic list)
+deprioritise:         # Sectors already known well
+default_output:       # value-chain / mindmap / research-note / research-brief
+text_size:            # comfortable / large / extra-large
+notes:                # Freetext preferences
+
+# Library
+library_save:         # always / ask / never
+library_mirror:       # drive / notion / local
+library_count:        # auto-incremented
+session_count:        # used for feedback timing
+
+# Watchlist monitoring
+watchlist_cadence:         # daily / weekly / fortnightly
+watchlist_last_run:        # date
+watchlist_email:           # email address
+watchlist_email_enabled:   # true / false
+watchlist_cowork_summary:  # true / false
+watchlist_topics:          # full YAML — name, triggers, signal priorities
+
+# Source credibility
+source_rating_enabled:              # true / false
+source_auto_accept_suggestions:     # true / false
+sources:                            # full registry
+```
+
+---
+
+## 8. Key URLs
+
+| Item | URL |
+|------|-----|
+| GitHub repo | github.com/ameya85/curiosity-stack |
+| Substack announcement | finstor85.substack.com/p/claude-plugin |
+| Privacy policy | finstor85.substack.com/p/privacy-policy |
+| Plugin directory | claude.com/plugins |
+| Feedback form | https://docs.google.com/forms/d/e/1FAIpQLScr_BFdPYWWBXmiiiuU4UKWdr9a94OBnUuaBgJ5515ZWBiZqQ/viewform |
+| Community hashtag | #CuriosityStack |
+| Author X | @Finstor85 |
+
+---
+
+## 9. Roadmap
+
+### v3.3.0 — Conviction Tracker + Cross-Decomposition Patterns
+**Conviction Tracker:**
+After decomposition + stress test, plugin asks 5 structured questions and produces a conviction score (1-10) with specific gaps listed. Not a buy signal — a research completeness score. Most differentiated feature for investor audience.
+
+**Cross-Decomposition Pattern Engine:**
+After 5+ decompositions saved in library, meta-skill fires periodically. Surfaces non-obvious connections — "3 of your recent topics converge at the power electronics layer (L4)." Surfaces patterns the user missed.
+
+### v4.0.0 — Post-PMF / Web App
+After Anthropic approval + user traction. Web app where someone pastes a topic and gets a structured decomposition — no Cowork needed. Community decomposition library. The framework is the IP, the Cowork integration is the distribution mechanism.
+
+---
+
+## 10. Pending Items
+
+| Item | Status |
+|------|--------|
+| Anthropic plugin review | ⏳ Submitted, awaiting response |
+| Substack v3.2.0 announcement post | ⏳ Write and publish |
+| X thread update for v3.2.0 | ⏳ Update [link] placeholders once approved |
+| Feature recording using test guide PDF | ⏳ Record all 12 features |
+| Replit animation video | ⏳ Use the 4-scenario prompt |
+| Skills 2.0 evaluation | ⏳ Run `/skill-creator evaluate curiosity-framework` in Cowork |
+| Legacy commands/ format migration | ⏳ Migrate to skills/*/SKILL.md in v3.3.0 |
+
+---
+
+## 11. What Popular Plugins Do Right (Reference)
+
+Key observations from plugin competitive analysis:
+
+- **Single job, zero friction** — best plugins have one sentence answer to "what does this do"
+- **Fit into existing workflow** — don't ask users to change how they work
+- **Produce something shareable** — output has life beyond the session
+- **Get faster with use** — knows more about you over time, stops asking questions it already knows
+
+**What Curiosity Stack is doing right:**
+- Framework is genuinely differentiated — no other plugin has the 6-layer method
+- Socratic approach is correct for a thinking tool
+- local.md memory is elegant solution to no-memory problem
+- India angle is a real moat — no other plugin has this
+- Watchlist + email digest is the habit loop
+
+**What was identified as gaps (being addressed):**
+- Output doesn't travel — solved by shareable card + Research Brief
+- No attribution trail — solved by ⬡ badge + invisible HTML comment
+- No feedback mechanism — solved by Google Form + session prompts
+- Visuals too small/cramped — solved by new design system in v3.2.0
+
+---
+
+## 12. Positioning Decisions
+
+**The depth is the moat.** 8-10 minutes to reach the value chain diagram is not a bug. A thinking tool should take time. Do not optimise for speed — optimise for depth.
+
+**Audience positioning:** "Most people read the headline. Curiosity Stack reads the value chain." — this is the core positioning line.
+
+**Use cases confirmed:**
+1. Geopolitical events → supply chain impact (Middle East, Russia-Ukraine)
+2. Personal/professional fear → reframing (AI job displacement)
+3. Technology wave → investment lens (AI inference)
+4. Emerging demand curve → anticipatory (cybersecurity)
+5. Cross-domain (user confirmed) — enterprise professionals understanding macro events, not just investors
+
+**Horizon 3 (web app + community library) only after PMF or Anthropic approval.**
+
+---
+
+## 13. Technical Notes
+
+**Hooks:** Must use `prompt` type hook, not `command` type. Node.js is not available in Cowork's Windows sandbox. Prompt hook requires no runtime dependency.
+
+**local.md writes:** Plugin cannot write local.md directly during a session (Cowork file system sandbox). Always generate YAML block for user to paste.
+
+**Skills format:** Standard `skills/*/SKILL.md` with YAML frontmatter. Same format works in both Cowork and Claude Code. Skills 2.0 (March 3, 2026) improved the skill-creator testing tool but did not change the SKILL.md format.
+
+**Git workflow:** Always use `curiosity-stack-v10` folder (has correct remote connected). Copy new files with xcopy, then `git add . && git commit && git push`. Never force push — preserves clean history for Anthropic review.
+
+**Version convention:**
+- `3.x.x` patch → bug fixes, compatibility fixes
+- `3.x.0` minor → new features
+- `4.0.0` major → post-PMF rebuild
+
+---
+
+*This document should be updated after every significant build session.*
+*Push to GitHub: `git add PRODUCT-NOTES.md && git commit -m "Update product notes" && git push`*

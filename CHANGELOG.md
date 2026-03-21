@@ -4,6 +4,27 @@ All notable changes to the Curiosity Stack plugin are documented here.
 
 ---
 
+## [3.2.1] — 2026-03-21
+
+### Added
+- **Scenario Library** (`skills/scenario-library/SKILL.md`) — 18 pre-built decomposition topics across 6 categories. Solves the blank slate problem for new users. Interactive HTML card browser with search, category filter, preview panel (shows all 6 layer previews before committing), and one-click launch into the full decomposition flow.
+- **`/curiosity-stack:scenarios`** command — launches the scenario browser
+- **Welcome message updated** — "Not sure what to decompose first? → /curiosity-stack:scenarios"
+
+### Categories (16 scenarios total)
+- 🇮🇳 Indian Business Sectors: Semiconductor packaging, Defence manufacturing, GCC opportunity, Pharma API
+- 🌍 Geopolitics: Middle East → oil, Russia-Ukraine → energy, US-China tariffs, Taiwan risk
+- 🌐 Global Trends: Grid-scale battery storage, Green hydrogen
+- 🤖 AI — Global: AI inference demand, AI data centre infrastructure
+- 🤖 AI — India: Indian IT services in AI era, India AI data annotation
+- 🔒 Cybersecurity: Enterprise cyber demand, OT security
+
+### Changed
+- `plugin.json` — version bumped to 3.2.1
+- `agents/welcome.md` — scenario library CTA added
+
+---
+
 ## [3.2.0] — 2026-03-20
 
 ### Added

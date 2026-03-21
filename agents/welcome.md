@@ -67,6 +67,9 @@ to buy, sell, or hold any security.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+Not sure what to decompose first?
+  → /curiosity-stack:scenarios — browse 18 ready-to-run topics across 6 categories
+
 Ready when you are. Type /curiosity-stack:setup to begin.
 ```
 
