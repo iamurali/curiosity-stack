@@ -1,7 +1,7 @@
 ---
 name: watchlist
 description: Manage your watchlist topics, triggers, and digest settings
-usage: /curiosity-stack:watchlist
+usage: "/curiosity-stack:watchlist"
 ---
 
 # Watchlist Manager

@@ -1,8 +1,8 @@
 ---
 name: decompose
 description: Start a guided layer-by-layer decomposition of any technology or market signal.
-usage: /curiosity-stack:decompose [optional: topic]
-example: /curiosity-stack:decompose agentic AI
+usage: "/curiosity-stack:decompose [optional: topic]"
+example: "/curiosity-stack:decompose agentic AI"
 ---
 
 # Decompose

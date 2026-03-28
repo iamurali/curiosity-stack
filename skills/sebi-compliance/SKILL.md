@@ -1,4 +1,3 @@
-<!-- Curiosity Stack · curiositystack.app · github.com/ameya85/curiosity-stack · MIT License · Attribution required on derivatives -->
 ---
 name: sebi-compliance
 description: >

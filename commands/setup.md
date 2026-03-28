@@ -1,7 +1,7 @@
 ---
 name: setup
 description: First-time setup. Connect sources, set context, configure geography.
-usage: /curiosity-stack:setup
+usage: "/curiosity-stack:setup"
 ---
 
 # Setup

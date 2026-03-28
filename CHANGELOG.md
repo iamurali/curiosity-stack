@@ -4,6 +4,47 @@ All notable changes to the Curiosity Stack plugin are documented here.
 
 ---
 
+## [3.3.0] — 2026-03-24
+
+### Rebuilt — India Proxy Agent
+
+Complete rewrite of the India Proxy Agent. Same command, radically
+deeper output.
+
+- Sub-segment decomposition before every search
+- 4-tier source hierarchy: analyst coverage (KuppingerCole, Gartner,
+  Forrester, IDC, Omdia) → India registries (NASSCOM, DPIIT, DSCI,
+  GEM, CERT-In) → 11 seeded VC portfolios → specialist publications
+- Emerging segment detection
+- Name currency checks (known rebrands: Aujas → NuSummit,
+  EduGorilla → Infobay AI)
+- SME exchange awareness (NSE Emerge / BSE SME correctly labelled)
+- Corrected flagging logic — never flag for obscurity
+- Structured 3-column table output always: Sub-segment | Global | India
+- Inline SEBI disclaimer on every run
+
+### Added — Domain Knowledge skill
+
+- `/curiosity-stack:knowledge` command
+- Personal company registry scoped per sector
+- Post-agent inline add form
+- Seeded vs Discovered labels in output
+- local.md extended with domain_knowledge section
+
+### Fixed — Layer card design restored
+
+- Full CSS block with stat cards, cause grid, vc-table, insight
+  callouts, company pills, progress bar, A/A+/A++ toggle
+- Layer header always #1b5e52 — never inherits scenario category colour
+- HTML fragment format enforced — no DOCTYPE/html/head/body tags
+
+### Fixed — Welcome agent
+
+- Welcome now responds as plain text in chat
+- 6 topic suggestions, no artifact, no loading time
+
+---
+
 ## [3.2.6] — 2026-03-23
 
 ### Added — Watchlist UI

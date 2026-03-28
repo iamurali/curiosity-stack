@@ -108,7 +108,7 @@ or financial instrument. All outputs are for educational and research purposes o
 Core framework, basic setup, 4 commands, 8 skills, 3 connectors.
 
 ### v2.0.0 — SEBI hardening
-SEBI compliance skill added. Thesis Stress Test added. Reading list added. Output choice flow (never auto-generate all three). MCP expanded to 17 connectors.
+SEBI compliance skill added. Thesis Stress Test added. Reading list added. Output choice flow (never auto-generate all three). MCP connector support via Cowork built-in connectors.
 
 ### v2.0.1 — Company name cleanup
 Removed all specific company and stock name references from public-facing files.
@@ -153,7 +153,7 @@ Removed all specific company and stock name references from public-facing files.
 ```
 curiosity-stack/
 ├── .claude-plugin/plugin.json       # Manifest v3.2.0
-├── .mcp.json                        # 17 MCP connectors
+
 ├── settings.json                    # Activates welcome agent on first session
 ├── agents/
 │   ├── welcome.md                   # First-session orientation

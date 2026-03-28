@@ -123,7 +123,7 @@ If it finds nothing meaningful, it says so — that is itself a useful research 
 
 Works standalone. Significantly better with your notes connected.
 
-Supports 17 connectors: Google Drive, Gmail, Google Calendar, Notion, Slack, OneDrive, Airtable, Dropbox, Box, Confluence, Jira, Asana, Linear, GitHub, HubSpot, Salesforce, Zapier.
+Works with all connectors you have enabled in Cowork — Gmail, Google Drive, Slack, Notion, GitHub, and more. Connect your tools in Cowork Settings → Connectors.
 
 Connect through `/curiosity-stack:setup` — no file editing required.
 
@@ -195,7 +195,7 @@ The SEBI disclaimer is enforced on every research output via a hook — it canno
 curiosity-stack/
 ├── .claude-plugin/
 │   └── plugin.json                   # Plugin manifest v3.1.0
-├── .mcp.json                         # 17 MCP connector definitions
+
 ├── settings.json                     # Activates welcome agent on first session
 ├── agents/
 │   ├── welcome.md                    # First-session welcome and orientation

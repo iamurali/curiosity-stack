@@ -1,8 +1,8 @@
 ---
 name: stress-test
 description: Run a thesis stress test on any research conclusion. Surfaces factors proponents cite, factors critics cite, core assumptions, and what could invalidate the thesis.
-usage: /curiosity-stack:stress-test [topic or company]
-example: /curiosity-stack:stress-test [company or thesis you want to pressure test]
+usage: "/curiosity-stack:stress-test [topic or company]"
+example: "/curiosity-stack:stress-test [company or thesis you want to pressure test]"
 ---
 
 # Thesis Stress Test

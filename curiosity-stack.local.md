@@ -62,3 +62,25 @@ sources:
     times_cited: 0
     notes:
     last_cited:
+
+# Domain knowledge — per-sector company intelligence
+# Used by the India Proxy Agent to surface non-obvious companies
+# Add companies you know via /curiosity-stack:knowledge
+
+domain_knowledge:
+  cybersecurity:
+    []
+  ai_data:
+    []
+  fintech:
+    []
+  ev_batteries:
+    []
+  pharma:
+    []
+  green_energy:
+    []
+  space:
+    []
+  general:
+    []

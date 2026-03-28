@@ -1,7 +1,7 @@
 ---
 name: scenarios
 description: Browse the Curiosity Stack scenario library — 18 pre-built decomposition topics across 6 categories
-usage: /curiosity-stack:scenarios
+usage: "/curiosity-stack:scenarios"
 ---
 
 # Scenario Library

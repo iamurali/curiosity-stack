@@ -1,7 +1,7 @@
 ---
 name: library
 description: Browse, search, and manage your saved decompositions
-usage: /curiosity-stack:library
+usage: "/curiosity-stack:library"
 ---
 
 # Decomposition Library
