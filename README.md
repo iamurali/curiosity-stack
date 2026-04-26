@@ -16,6 +16,66 @@ Not a stock tips tool. Not a recommendation engine. A rigorous thinking partner 
 
 ---
 
+## Install (Claude + Cursor)
+
+### Claude
+
+Use one command to register this repo as a local Claude Code marketplace and install the plugin (skills, agents, commands, hooks):
+
+```bash
+./scripts/setup-claude-plugin.sh
+```
+
+Then:
+
+1. Restart Claude Code (or reload the project).
+2. Start a new chat — the default agent from `settings.json` should load `welcome`.
+3. Verify by typing a natural-language intent like: "help me understand AI inference demand."
+
+Optional maintenance commands:
+
+```bash
+./scripts/setup-claude-plugin.sh --dry-run    # Preview actions
+./scripts/setup-claude-plugin.sh --update     # Refresh after pulling repo changes
+./scripts/setup-claude-plugin.sh --uninstall  # Remove plugin and marketplace entry
+```
+
+### Cursor
+
+Use one command to install skills globally from this repo's canonical `skills/`:
+
+```bash
+./scripts/setup-cursor-skills.sh
+```
+
+This syncs `skills/*/SKILL.md` to `~/.cursor/skills/<skill-name>/SKILL.md`.
+
+Then:
+
+1. Restart Cursor (or reload window).
+2. Start a fresh chat in the project context.
+3. Verify with a natural-language request like: "set me up for India-focused research."
+
+Optional maintenance commands:
+
+```bash
+# Preview changes only
+./scripts/setup-cursor-skills.sh --dry-run
+
+# Remove stale managed skills not present in this repo
+./scripts/setup-cursor-skills.sh --clean
+```
+
+### First-run verification checklist
+
+- Plugin loads without manifest errors.
+- Welcome guidance appears from the `welcome` agent.
+- A plain-language request routes to the right skill without slash commands.
+- Cursor skill count should match canonical skills in this repo.
+- If routing looks wrong, check repo path, plugin metadata, and reload the workspace.
+
+---
+
 ## The Six Layers
 
 | Layer | Question | What You Find |
@@ -32,22 +92,25 @@ Not a stock tips tool. Not a recommendation engine. A rigorous thinking partner 
 
 ## How It Works — Point A to Point B
 
-**Install** → Open Cowork → Welcome message fires automatically → Run `/curiosity-stack:setup` (2 minutes, once) → Describe any topic in plain language → Walk 6 layers → Choose output → Done.
+**Install** -> Open Cowork/Cursor chat -> Welcome message fires automatically -> Say "set me up" (2 minutes, once) -> Describe any topic in plain language -> Walk 6 layers -> Choose output -> Done.
 
 From the second session onwards: just describe a topic. The plugin reads your saved context silently and begins.
 
 ---
 
-## Commands
+## Skill-First Entry (Commands Deprecated)
 
-| Command | What it does |
+Use natural language directly. The plugin resolves intent and routes to the right skill automatically.
+
+| Say this naturally | Routed skill |
 |---------|-------------|
-| `/curiosity-stack:setup` | First-time setup — connect sources, set context, configure monitoring |
-| `/curiosity-stack:decompose` | Guided layer-by-layer decomposition |
-| `/curiosity-stack:india-proxy` | Autonomous agent — finds Indian equivalents of any global company or theme |
-| `/curiosity-stack:stress-test` | Thesis stress test — proponents, critics, core assumptions, failure modes |
-| `/curiosity-stack:library` | Browse, search, and manage your decomposition library |
-| `/curiosity-stack:watchlist` | Manage watchlist topics, triggers, cadence, and digest settings |
+| "set me up" / "configure my context" | setup |
+| "help me understand [topic]" | curiosity-framework |
+| "show my watchlist" / "add trigger for [topic]" | watchlist-tracker |
+| "open my library" / "compare past decomposition" | decomposition-library |
+| "manage my domain knowledge" | domain-knowledge |
+| "give me ideas" / "show scenarios" | scenario-library |
+| "stress test this thesis" | thesis-stress-test |
 
 ---
 
@@ -88,7 +151,7 @@ The agent checks that condition each run and fires only when met — flagged as 
 
 Signal types monitored: news, regulatory changes, new entrants, funding rounds.
 
-Configure via `/curiosity-stack:watchlist` or during setup.
+Configure by saying "manage my watchlist" or during setup.
 
 ---
 
@@ -106,7 +169,7 @@ After 5+ decompositions, the plugin suggests ratings based on your usage pattern
 
 ## The India Proxy Agent
 
-`/curiosity-stack:india-proxy` is a fully autonomous research agent, not a prompt.
+The India Proxy Agent is a fully autonomous research agent, not a prompt.
 
 You give it a global company or theme. It independently:
 
@@ -125,7 +188,7 @@ Works standalone. Significantly better with your notes connected.
 
 Works with all connectors you have enabled in Cowork — Gmail, Google Drive, Slack, Notion, GitHub, and more. Connect your tools in Cowork Settings → Connectors.
 
-Connect through `/curiosity-stack:setup` — no file editing required.
+Connect by saying "set me up" — no file editing required.
 
 ---
 
@@ -201,13 +264,9 @@ curiosity-stack/
 │   ├── welcome.md                    # First-session welcome and orientation
 │   ├── india-proxy-agent.md          # Autonomous India proxy research agent
 │   └── watchlist-agent.md            # Autonomous watchlist monitoring agent
-├── commands/
-│   ├── setup.md
-│   ├── decompose.md
-│   ├── india-proxy.md
-│   ├── stress-test.md
-│   ├── library.md                    # Browse decomposition library
-│   └── watchlist.md                  # Manage watchlist and triggers
+├── commands/                         # Legacy command aliases (deprecated)
+├── scripts/
+│   └── setup-cursor-skills.sh        # One-command sync to ~/.cursor/skills
 ├── hooks/
 │   └── hooks.json                    # SEBI disclaimer on every Stop event
 ├── skills/

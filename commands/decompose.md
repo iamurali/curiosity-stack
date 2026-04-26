@@ -7,6 +7,9 @@ example: "/curiosity-stack:decompose agentic AI"
 
 # Decompose
 
+Legacy command alias. Natural-language intent routing is the primary entry.
+Preferred prompt: "help me understand [topic]".
+
 Walk any concept through 6 layers of structured questioning — from surface signal to named companies and research landscape.
 
 I'll check your connected notes first, then walk one layer at a time. At the end, you choose your output: Value Chain diagram, Mindmap, or Research Note.

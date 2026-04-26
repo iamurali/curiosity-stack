@@ -3,8 +3,8 @@ name: domain-knowledge
 description: >
   Manages the user's personal domain knowledge registry — company
   intelligence seeded per sector that the India Proxy Agent uses
-  before searching. Activates when user runs /curiosity-stack:knowledge,
-  says "manage my domain knowledge", "add company to my knowledge",
+  before searching. Activates when user says "manage my domain knowledge",
+  "open domain knowledge", "add company to my knowledge",
   or clicks the "missed company" add form after an India Proxy Agent run.
   Also activates after any India Proxy Agent output to surface the
   inline add prompt.
@@ -64,6 +64,16 @@ purple or blue as primary backgrounds.
 
 # Domain Knowledge Skill
 
+## Intent routing metadata
+
+- intent_id: `domain_knowledge_manage`
+- priority: medium-high
+- requires_context:
+  - post India Proxy Agent output, or explicit user request
+- phrase_hints:
+  - manage my domain knowledge
+  - add this company to knowledge
+
 ## Purpose
 
 A personal registry of company intelligence the user knows from their
@@ -84,7 +94,8 @@ Minimal form: company name + sub-segment + note.
 On save: fires sendPrompt() to confirm and writes to local.md.
 
 ### Entry Point B — Standalone manager
-/curiosity-stack:knowledge opens the full Domain Knowledge Manager UI.
+A natural-language request to manage domain knowledge opens the full
+Domain Knowledge Manager UI.
 Sector tabs, full company list, add/edit/remove controls.
 
 ---
@@ -212,7 +223,7 @@ The domain knowledge manager is not shown upfront to new users.
 It surfaces:
 1. After first India Proxy Agent run — "Add a missed company"
 2. After 3+ proxy agent runs — "Manage your domain knowledge"
-3. On explicit command — /curiosity-stack:knowledge
+3. On explicit user intent — "manage my domain knowledge"
 
 Never show the full manager UI unless requested or after sufficient usage.
 The post-agent inline form is the primary entry point.

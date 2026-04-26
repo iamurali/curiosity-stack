@@ -7,6 +7,9 @@ example: "/curiosity-stack:stress-test [company or thesis you want to pressure t
 
 # Thesis Stress Test
 
+Legacy command alias. Natural-language intent routing is the primary entry.
+Preferred prompts: "stress test this thesis", "what could go wrong?".
+
 A structured thinking exercise that examines a research thesis from both sides — factors that proponents cite, factors that critics cite, the core assumption the thesis rests on, and how wrong it could be.
 
 This is not a recommendation for or against anything. It is a tool for rigorous independent thinking.

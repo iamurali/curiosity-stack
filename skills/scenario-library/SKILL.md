@@ -3,7 +3,7 @@ name: scenario-library
 description: >
   Activate when user says "I don't know what to research", "give me ideas",
   "what can I decompose", "show me scenarios", "browse topics", "not sure where
-  to start", "what topics are available", or runs /curiosity-stack:scenarios.
+  to start", "what topics are available".
   Also activate on first session if local.md session_count is 0 or empty —
   surface the library automatically after the welcome message.
   Never activate mid-decomposition.
@@ -74,6 +74,17 @@ Correct: <style>...</style><div>...
 
 
 # Scenario Library
+
+## Intent routing metadata
+
+- intent_id: `scenario_discovery`
+- priority: medium
+- requires_context:
+  - no active decomposition flow
+- phrase_hints:
+  - give me ideas
+  - show scenarios
+  - not sure where to start
 
 ## Purpose
 

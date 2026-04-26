@@ -12,6 +12,9 @@ agent: india-proxy-agent
 
 # India Proxy
 
+Legacy command alias. Natural-language intent routing is the primary entry.
+Preferred prompts: "find India proxies", "show India angle for this chain".
+
 Activates the India Proxy Agent.
 
 The agent follows a mandatory sourcing checklist defined in its

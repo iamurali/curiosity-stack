@@ -1,5 +1,5 @@
 # Curiosity Stack — Personal Context
-# Fill this in via /curiosity-stack:setup or edit directly.
+# Fill this in by saying "set me up" or edit directly.
 # This file is read at the start of every session.
 
 # ── Core Context ──────────────────────────────────────────
@@ -65,7 +65,7 @@ sources:
 
 # Domain knowledge — per-sector company intelligence
 # Used by the India Proxy Agent to surface non-obvious companies
-# Add companies you know via /curiosity-stack:knowledge
+# Add companies you know by saying "manage my domain knowledge"
 
 domain_knowledge:
   cybersecurity:

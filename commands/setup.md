@@ -6,8 +6,11 @@ usage: "/curiosity-stack:setup"
 
 # Setup
 
+Legacy command alias. Natural-language intent routing is the primary entry.
+Preferred prompt: "set me up".
+
 Personalise your Curiosity Stack in 2 minutes — connect your research sources, set your context, configure geography focus.
 
 No file editing. No technical steps.
 
-Type `/curiosity-stack:setup` or say "set me up" to begin.
+Say "set me up" to begin.

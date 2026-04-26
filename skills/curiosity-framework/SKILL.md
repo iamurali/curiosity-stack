@@ -3,16 +3,27 @@ name: curiosity-framework
 description: >
   The core 6-layer decomposition framework. Activates when a user
   describes any topic, technology, market signal, or global event.
-  Also activates when a scenario card is clicked via sendPrompt,
-  or when /curiosity-stack:decompose is run. Guides the user through
+  Also activates when a scenario card is clicked via sendPrompt.
+  Guides the user through
   L0 to L6 using Socratic conversation — one layer at a time.
 triggers:
   - describe any topic or signal
   - start a decomposition
-  - /curiosity-stack:decompose
+  - help me understand [topic]
+  - break down [topic]
 ---
 
 # Curiosity Framework — Core Decomposition Skill
+
+## Intent routing metadata
+
+- intent_id: `decompose_topic`
+- priority: medium
+- requires_context: none
+- excludes:
+  - direct watchlist management requests
+  - domain knowledge management requests
+  - setup/onboarding requests
 
 ## CRITICAL — Artifact format rule
 

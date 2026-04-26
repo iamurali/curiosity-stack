@@ -62,6 +62,15 @@ purple or blue as primary backgrounds.
 
 # Decomposition Library
 
+## Intent routing metadata
+
+- intent_id: `library_manage`
+- priority: medium
+- phrase_hints:
+  - open my library
+  - show my research
+  - load previous decomposition
+
 ## Purpose
 
 A personal research library that grows with every session. Every completed decomposition can be saved locally as a structured file. The library is searchable, cross-referenceable, and optionally mirrored to Google Drive or Notion.
@@ -199,9 +208,9 @@ Save their answer to `local.md` as `library_mirror` — never ask again.
 
 ---
 
-## `/curiosity-stack:library` Command
+## Library management invocation
 
-When user runs this command, present:
+When user asks to open/manage library, present:
 
 ```
 Your Decomposition Library

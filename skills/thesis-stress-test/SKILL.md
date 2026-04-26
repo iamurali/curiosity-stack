@@ -1,7 +1,7 @@
 ---
 name: thesis-stress-test
 description: >
-  Activate when user runs /curiosity-stack:stress-test or says "stress test this",
+  Activate when user says "stress test this",
   "challenge this thesis", "what could go wrong", "bull vs bear", or after a
   decomposition output when user wants to pressure-test their conclusion.
 ---
@@ -59,6 +59,15 @@ purple or blue as primary backgrounds.
 
 
 # Thesis Stress Test
+
+## Intent routing metadata
+
+- intent_id: `thesis_stress_test`
+- priority: medium
+- phrase_hints:
+  - stress test this thesis
+  - what could go wrong
+  - challenge this view
 
 ## Purpose
 
@@ -138,20 +147,6 @@ One honest paragraph. Specific, not generic. Name the exact condition that would
 **Milestones:**
 3-4 specific observable events with timeframes where possible.
 
----
-
-## After Generating
-
-```
-Was this stress test useful?
-👍  👎  💬 → [Google Form link]
-
-⬡ Curiosity Stack · #CuriosityStack
-```
-
-Form: https://docs.google.com/forms/d/e/1FAIpQLScr_BFdPYWWBXmiiiuU4UKWdr9a94OBnUuaBgJ5515ZWBiZqQ/viewform
-
----
 
 ## Disclaimer
 

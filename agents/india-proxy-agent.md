@@ -4,7 +4,7 @@ description: >
   Autonomous agent that finds Indian companies at each layer of any
   global value chain. Activates when user says "find India proxies",
   "what Indian companies play here", "India angle", or after L5 in
-  any decomposition. Also activates on /curiosity-stack:india-proxy.
+  any decomposition.
   Runs fully autonomously — no further input needed after triggering.
 type: agent
 ---

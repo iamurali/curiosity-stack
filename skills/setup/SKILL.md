@@ -8,6 +8,17 @@ description: >
 
 # Curiosity Stack: Setup
 
+## Intent routing metadata
+
+- intent_id: `onboarding_setup`
+- priority: high on first session
+- requires_context:
+  - first session or explicit setup intent
+- phrase_hints:
+  - set me up
+  - configure my research context
+  - connect my notes
+
 ## Purpose
 
 Conversational onboarding. No file editing, no technical steps. Get the user configured and into their first session as fast as possible.
@@ -184,8 +195,8 @@ Where should I send the digest?
 
 For each topic on your watchlist, you can also set specific 
 triggers — e.g. "alert me when a new company enters Layer 4 
-of EV batteries." We can set those up now or later via 
-/curiosity-stack:watchlist.
+of EV batteries." We can set those up now or later by saying
+"manage my watchlist".
 ```
 
 If Gmail is connected, auto-detect email address and confirm:
@@ -261,7 +272,7 @@ Sources: [connected list or "none yet"]
 Watching: [their list or "building as we go"]
 
 To start your first decomposition:
-/curiosity-stack:decompose
+Say: "help me understand [your topic]"
 
 Or just tell me a topic and we'll begin.
 ```

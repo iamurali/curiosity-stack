@@ -4,7 +4,7 @@ description: >
   Activate when Cowork is opened and watchlist monitoring cadence has elapsed.
   Activate when user says "check my watchlist", "what's new on my watchlist",
   "run watchlist", "any updates", "watchlist digest", or configures monitoring
-  via /curiosity-stack:watchlist command.
+  via natural-language watchlist requests.
   Do NOT activate on every session — check last_run date in local.md first.
 ---
 ## Design system — mandatory on all HTML artifacts
@@ -61,6 +61,17 @@ purple or blue as primary backgrounds.
 
 
 # Watchlist Tracker + Trigger Alerts
+
+## Intent routing metadata
+
+- intent_id: `watchlist_manage`
+- priority: high when cadence elapsed or user asks for watchlist
+- requires_context:
+  - `watchlist_cadence` for scheduled mode
+- phrase_hints:
+  - show my watchlist
+  - add watchlist trigger
+  - watchlist digest
 
 ## Purpose
 
@@ -205,7 +216,7 @@ watchlist_last_run: [today's date]
 
 ---
 
-## `/curiosity-stack:watchlist` Command
+## Watchlist management invocation
 
 ```
 Your Watchlist
@@ -268,7 +279,7 @@ only when the user clicks "Generate YAML to save" or confirms changes.
 ### When to render the watchlist UI
 
 - User says "show my watchlist" / "manage watchlist" / "open watchlist"
-- User runs /curiosity-stack:watchlist
+- User asks to manage watchlist in natural language
 - User adds a topic — show the UI with the new topic expanded
 - User sets a trigger — show the UI with that trigger already added
 - After any watchlist change — re-render the UI to confirm the state
